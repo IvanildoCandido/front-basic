@@ -1,3 +1,15 @@
 body {
   background: #fff;
 }
+.feed {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  margin: 3px;
+}
