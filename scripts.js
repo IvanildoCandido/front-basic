@@ -1,9 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
   const data = [];
+  const loading = document.querySelector('.loading');
+  loading.style.display = 'flex';
   fetch('https://us-central1-squid-apis.cloudfunctions.net/test-front-basic')
     .then((response) => response.json())
     .then((result) => createImage(result))
-    .then(() => showInfo());
+    .then(() => {
+      showInfo();
+      loading.style.display = 'none';
+    });
 });
 
 const createImage = (data) => {
@@ -11,7 +16,9 @@ const createImage = (data) => {
   data.map(
     (item) =>
       (container.innerHTML += `
-      <a href="${item.link}" target="_blank" class="feed-image" style="background-image: url(${
+      <a href="${
+        item.link
+      }" target="_blank" class="feed-image" style="background-image: url(${
         item.imagens.thumbnail.url
       });">
         <div class="info-user">
